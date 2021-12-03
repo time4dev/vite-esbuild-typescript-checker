@@ -48,7 +48,7 @@ const EsbuildPlugin = (config) => {
             build.onEnd((result) => {
                 console.log(chalk_1.default.blue(`[${moment_1.default().format('Y-MM-DD H:mm:ss')}] Build ended with ${result.errors.length} errors`));
                 if (!result.errors.length && !helper.worker) {
-                    helper.workerStart(undefined, options.watch ?? false);
+                    helper.workerStart(undefined, !!options.watch);
                 }
             });
             build.onLoad({ filter: /\.jsx?|\.tsx?$/ }, async (args) => {
