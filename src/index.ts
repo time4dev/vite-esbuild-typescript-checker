@@ -53,7 +53,7 @@ export const EsbuildPlugin = (config: PluginConfig): Plugin => {
             build.onEnd((result: any) => {
                 console.log(chalk.blue(`[${moment().format('Y-MM-DD H:mm:ss')}] Build ended with ${result.errors.length} errors`))
                 if (!result.errors.length && !helper.worker) {
-                    helper.workerStart(undefined, options.watch ?? false);
+                    helper.workerStart(undefined, !!options.watch);
                 }
             });
 
