@@ -44,7 +44,7 @@ class Helper {
                 process_1.default.exit();
                 return null;
             }
-            this.handleMessage(message);
+            this.handleMessage(message, ws);
         }, this.config.checker);
         this.worker.postMessage({
             type: 'changedFiles',
@@ -107,7 +107,7 @@ class Helper {
                 ].join("\n"));
                 return issue;
             });
-            if (issues[0] && this.config && ws) {
+            if (ws && issues[0] && this.config.vite.overlay) {
                 ws.send(this.getPayloadError(issues[0]));
             }
             if (issues.length)

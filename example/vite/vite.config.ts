@@ -4,6 +4,9 @@ import { VitePlugin }  from '../../dist';
 
 export default defineConfig({
     plugins: [vue(), VitePlugin({
+        vite: {
+            overlay: true
+        },
         checker: {
             typescript: {
                 extensions: {

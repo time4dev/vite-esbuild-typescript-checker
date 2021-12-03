@@ -49,6 +49,7 @@ export class Helper {
         return worker;
     }
 
+
     workerStart(ws?: WebSocketServer, watch: boolean = false) {
         this.config.checker.async = watch;
         this.worker = this.runWorker(path.resolve(__dirname, 'worker.js'), (err, message) => {
@@ -58,7 +59,7 @@ export class Helper {
                 return null;
             }
 
-            this.handleMessage(message)
+            this.handleMessage(message, ws)
         }, this.config.checker);
 
         this.worker.postMessage({
@@ -134,7 +135,7 @@ export class Helper {
                 return issue;
             });
 
-            if (issues[0] && this.config && ws) {
+            if (ws && issues[0] && this.config.vite.overlay) {
                 ws.send(this.getPayloadError(issues[0]));
             }
 

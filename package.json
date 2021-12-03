@@ -1,6 +1,6 @@
 {
   "name": "vite-esbuild-typescript-checker",
-  "version": "0.0.1-alpha.7",
+  "version": "0.0.1-alpha.8",
   "description": "Checker typescript vite and esbuild",
   "license": "MIT",
   "main": "dist/index.js",
