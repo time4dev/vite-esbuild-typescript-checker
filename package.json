@@ -1,6 +1,6 @@
 {
   "name": "vite-esbuild-typescript-checker",
-  "version": "0.0.1-alpha.9",
+  "version": "1.0.0",
   "description": "Checker typescript vite and esbuild",
   "license": "MIT",
   "main": "dist/index.js",
@@ -22,7 +22,7 @@
     "typescript"
   ],
   "author": "time4dev <time4ps@gmail.com> based on Piotr Oleś <piotrek.oles@gmail.com> https://github.com/TypeStrong/fork-ts-checker-webpack-plugin",
-  "dependencies": {
+  "devDependencies": {
     "@babel/code-frame": "^7.14.5",
     "@types/babel__code-frame": "^7.0.3",
     "@types/lodash": "^4.14.172",
@@ -42,7 +42,8 @@
     "tapable": "^2.2.0",
     "ts-node": "^10.2.1",
     "typescript": "^4.3.5",
-    "vite": "^2.5.0"
+    "vite": "^2.5.0",
+    "webpack": "^4.46.0"
   },
   "packageManager": "yarn@3.0.1"
 }

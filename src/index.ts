@@ -1,9 +1,9 @@
-import { Helper, PluginConfig } from "./helper";
-import { Plugin } from "esbuild";
+import {Helper, PluginConfig} from "./helper";
+import {OnLoadArgs, Plugin} from "esbuild";
 import chalk from "chalk";
 import moment from "moment";
 
-import { ViteDevServer } from "vite";
+import {ViteDevServer} from "vite";
 
 export function VitePlugin(config?: PluginConfig) {
     const defaultConfig = {
@@ -20,7 +20,7 @@ export function VitePlugin(config?: PluginConfig) {
 
     return {
         name: 'vite-plugin-fork-ts-checker',
-        configureServer({ watcher, ws, config: { logger } }: ViteDevServer) {
+        configureServer({watcher, ws, config: {logger}}: ViteDevServer) {
             helper.workerStart(ws, true);
 
             watcher.on('add', helper.addFile)
@@ -57,9 +57,7 @@ export const EsbuildPlugin = (config: PluginConfig): Plugin => {
                 }
             });
 
-            build.onLoad({ filter: /\.jsx?|\.tsx?$/ }, async (args: any) => {
-                if (helper.worker) helper.addFile(args.path);
-            })
+            build.onLoad({filter: /\.jsx?|\.tsx?$/}, async (args: OnLoadArgs) => helper.worker ? helper.addFile(args.path) : undefined)
         }
     }
 }

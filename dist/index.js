@@ -51,10 +51,7 @@ const EsbuildPlugin = (config) => {
                     helper.workerStart(undefined, !!options.watch);
                 }
             });
-            build.onLoad({ filter: /\.jsx?|\.tsx?$/ }, async (args) => {
-                if (helper.worker)
-                    helper.addFile(args.path);
-            });
+            build.onLoad({ filter: /\.jsx?|\.tsx?$/ }, async (args) => helper.worker ? helper.addFile(args.path) : undefined);
         }
     };
 };
